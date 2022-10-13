@@ -1,0 +1,31 @@
+<nz-list nzGrid>
+  <div nz-row [nzGutter]="48">
+    <div nz-col [nzSpan]="12" *ngFor="let item of data">
+      <nz-list-item>
+        <nz-card [nzTitle]="item.name">
+          <div>
+            <p>Điểm đi : {{ item.diemdi }}</p>
+            <p>Điểm đến : {{ item.diemtoi }}</p>
+          </div>
+          <p>Số chỗ ngồi : {{ item.loaixe }}</p>
+          <button nz-button nzType="primary" (click)="test(item)">
+            Chọn chuyến
+          </button>
+        </nz-card>
+      </nz-list-item>
+    </div>
+  </div>
+</nz-list>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
