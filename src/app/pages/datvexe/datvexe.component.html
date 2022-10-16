@@ -1,12 +1,20 @@
+<!-- <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedValue">
+  <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+  <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+  <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+</nz-select> -->
+
 <nz-list nzGrid>
   <div nz-row [nzGutter]="48">
     <div nz-col [nzSpan]="12" *ngFor="let item of data">
       <nz-list-item>
         <nz-card [nzTitle]="item.name">
-          <div>
-            <p>Điểm đi : {{ item.diemdi }}</p>
-            <p>Điểm đến : {{ item.diemtoi }}</p>
-          </div>
+            <div nz-row [nzGutter]="48">
+              <p nz-col [nzSpan]="12">Điểm đi : {{ item.diemdi }} • {{ item.giodi }}</p>
+              <p nz-col [nzSpan]="12">Giá vé : {{item.giave | currency: "VND"}}</p>
+              <p nz-col [nzSpan]="12">Điểm đến : {{ item.diemtoi }} • {{ item.gioden }}</p>
+              <p nz-col [nzSpan]="12">Còn {{ item.ghetrong }} chỗ trống</p>
+            </div>
           <p>Số chỗ ngồi : {{ item.loaixe }}</p>
           <button nz-button nzType="primary" (click)="test(item)">
             Chọn chuyến

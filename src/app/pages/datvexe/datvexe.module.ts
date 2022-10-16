@@ -11,6 +11,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { BrowserModule } from '@angular/platform-browser';
     NzGridModule,
     NzCardModule,
     NzButtonModule,
-    NzModalModule
+    NzModalModule,
+    NzAutocompleteModule,
+    NzSelectModule,
+    FormsModule
   ]
 })
 export class DatvexeModule { }
