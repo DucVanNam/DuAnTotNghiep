@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor() { }
+  validateForm!: UntypedFormGroup;
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
+    } else {
+      Object.values(this.validateForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
+  }
+  constructor(private fb: UntypedFormBuilder) { }
   //trạng thái 0 chưa chọn, trạng thái 1 đang chọn, trạng thái 2 ghế đã được mua
   data = [
     {
@@ -75,7 +89,11 @@ export class DashboardComponent implements OnInit {
     }
   ];
   ngOnInit(): void {
-
+    this.validateForm = this.fb.group({
+      userName: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+      phone: [null, [Validators.required]],
+    });
   }
   chuyenMau(item: any) {
 
